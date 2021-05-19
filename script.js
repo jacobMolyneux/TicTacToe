@@ -1,35 +1,47 @@
-const gameDisplay = document.getElementById('container');
-// array that will hold the player positions
-let selections = [];
-// add boxes that to game Display
-let i;
-for(i = 0; i < 9; i++){
-    const box = document.createElement('div');
-    box.classList = 'Box';
-    box.addEventListener("click", function(){
-            box.textContent = "O"; 
-        
-    });
-    gameDisplay.appendChild(box);
+
+
+const player = (name, icon) =>{
+    const sayHello = () => console.log(`Hello ${player.name}`);
+    return {sayHello, name, icon}
 }
-
-
-// Creating a player object using factory functions
-const player = (name, color) => {
-    const sayHello = () => console.log("hello!"); 
-    return { name, color, sayHello};
+let i = 0;
+const gameBoard = (player1, player2) => {
+    const gameDisplay = document.getElementById('container');
+    const startGame = () => {
+        console.log("start game has started! But the loop has not started yet");
+        for(let i = 0; i < 9; i++){
+            console.log("the loop has started!");
+            const gameDisplay = document.getElementById('container');
+            console.log("container has been retrieved");
+            const box = document.createElement('div');
+            console.log("the box has been created!");
+            box.classList = 'box';
+            console.log("the class list has been created");
+            box.addEventListener('click', function(){
+                
+                console.log("the event listener is being added.")
+                
+                if(i%2 == 0){
+                box.textContent = player1.icon;
+                i++;
+                }
+                
+                else{
+                    box.textContent = player2.icon;
+                    i++;
+                }
+                console.log(`the value of i is: ${i}`);
+                
+            });
+            gameDisplay.appendChild(box);
+            console.log("box is being appended!");
+        };
+    };
+    return {gameDisplay, startGame};
     
-    
-}; 
-const jacob = player("jacob", "red"); 
-console.log(jacob.name);
-jacob.sayHello();
-
-const box = document.getElementsByClassName('Box');
-const ClearButton = document.getElementById('clearButton');
-
-ClearButton.addEventListener("click", function(){
-    let box = document.getElementsByClassName('Box');
-    box.style.background = "white";
-})
+}
+player1 = player('jacob', "X");
+player2 = player('bob', "O");
+NewGame = gameBoard(player1, player2);
+NewGame.startGame();
 

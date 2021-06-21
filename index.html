@@ -10,24 +10,35 @@
     <h1 id = 'title'> Tic Tac Toe </h1>
    
     <div id = 'Large Container'>
-
+        <div id = 'PlayerDetails'>
+            <div id = 'player1Details' class = 'playerDetailsclass'>
+                <div id = 'player1Name' class = 'playerDetailsDisplay'></div>
+                <div id = 'player1Icon' class = 'playerDetailsDisplay'></div>
+            </div>
+            <div id = 'player2Details' class = 'playerDetailsclass'>
+                <div id = 'player2Name' class = 'playerDetailsDisplay'></div>
+                <div id = 'player2Icon' class = 'playerDetailsDisplay'></div>
+            </div>
+        </div>
         <div id = "playerNameForms">
             <div class = 'playerInfo' id = 'player1Info'>
                 <h1>Player 1 Name:</h1>
                 <form>
-                    <input type = "text" id ="player1Name" name = "player1Name">
+                    <input type = "text" id ="player1Name" value = 'value'/>
                 </form>
         </div>
-            <div class = 'playerInfo'  id = 'player2Info'> 
+            <div class = 'playerInfo'  id = 'player2Info' > 
                 <h1>Player 2 Name: </h1>
                 <form>
-                    <input type = "text" id ="player2Name" name = "player2Name">
+                    <input type = "text" id ="player2Name" value = 'value' />
                 </form>
             </div>
-            <button id = 'clearButton'>Click Here to Play!</button>
+            <button id = 'playButton'>Click Here to Play!</button>
         
         </div>
-    <div id = "container"></div>
+        
+    <div id = "container">
+    </div>
     
 </body>
 </html>

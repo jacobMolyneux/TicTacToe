@@ -3,28 +3,38 @@ const player = (name, icon) => {
   return { sayHello, name, icon };
 };
 let i = 0;
+let boxArray = ["", "", "", "", "", "", "", "", ""];
 
 const gameBoard = (player1, player2) => {
   const gameDisplay = document.getElementById("container");
 
   const startGame = () => {
     let clickCounter = 0;
-    for (let i = 0; i < 9; i++) {
+    let i = -1;
+    createBox = () => {
       const gameDisplay = document.getElementById("container");
       const box = document.createElement("div");
       box.classList = "box";
+      i++;
+      box.setAttribute("id", i);
+      console.log(boxArray);
       box.addEventListener("click", function () {
-        console.log("the event listener is being added.");
         if (clickCounter % 2 == 0) {
           box.textContent = player1.icon;
           clickCounter++;
+          boxArray.splice(box.id, 1, box.textContent);
+          console.log(boxArray);
         } else {
           box.textContent = player2.icon;
+          boxArray.splice(box.id, 1, box.textContent);
+          console.log(boxArray);
           clickCounter++;
         }
       });
       gameDisplay.appendChild(box);
-    }
+    };
+    boxArray.map(createBox);
+
     const Player1NameDiv = document.getElementById("player1Name");
     Player1NameDiv.textContent = player1.name;
     const Player1IconDiv = document.getElementById("player1Icon");

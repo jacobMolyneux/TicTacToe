@@ -20,25 +20,24 @@
                 <div id = 'player2Icon' class = 'playerDetailsDisplay'></div>
             </div>
         </div>
+        <form type = 'text' id ='userNameForm'>
         <div id = "playerNameForms">
             <div class = 'playerInfo' id = 'player1Info'>
-                <h1>Player 1 Name:</h1>
-                <form>
-                    <input type = "text" id ="player1Name" value = 'value'/>
-                </form>
+                <label>Player 1 Name:</label>
+                
+                    <input type = "text" id ="player1Name" name = 'player1name' value = ''/>
+                
         </div>
             <div class = 'playerInfo'  id = 'player2Info' > 
-                <h1>Player 2 Name: </h1>
-                <form>
-                    <input type = "text" id ="player2Name" value = 'value' />
-                </form>
+                <label>Player 2 Name:</label>
+                <input type = "text" id ="player2Name" name = 'player2name' value = ''/>
             </div>
             <button id = 'playButton'>Click Here to Play!</button>
         
         </div>
+    </form>
         
-    <div id = "container">
-    </div>
+    <div id = "container"></div>
     
 </body>
 </html>

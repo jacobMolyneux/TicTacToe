@@ -2,8 +2,24 @@ const player = (name, icon) => {
   const sayHello = () => console.log(`Hello ${player.name}`);
   return { sayHello, name, icon };
 };
+
+function winnerCheck(gameArray) {
+  winningArrays = [
+    [0, 1, 2],
+    [0, 3, 6],
+    [0, 4, 8],
+    [1, 4, 7],
+    [2, 5, 8],
+    [2, 4, 6],
+    [3, 4, 5],
+  ];
+  let intGameArray = gameArray.map(Number);
+}
+
 let i = 0;
 let boxArray = ["", "", "", "", "", "", "", "", ""];
+let player1Moves = [];
+let player2Moves = [];
 
 const gameBoard = (player1, player2) => {
   const gameDisplay = document.getElementById("container");
@@ -24,11 +40,20 @@ const gameBoard = (player1, player2) => {
           clickCounter++;
           boxArray.splice(box.id, 1, box.textContent);
           console.log(boxArray);
+          player1Moves.push(box.id);
+          player1Moves.map(Number);
+          winnerCheck(player1Moves);
+
+          console.log("player 1 moves are " + player1Moves.sort());
         } else {
           box.textContent = player2.icon;
           boxArray.splice(box.id, 1, box.textContent);
           console.log(boxArray);
           clickCounter++;
+          player2Moves.push(box.id);
+          player2Moves.map(Number);
+          winnerCheck(player2Moves);
+          console.log("player2 moves are " + player2Moves.sort());
         }
       });
       gameDisplay.appendChild(box);
@@ -49,20 +74,19 @@ const gameBoard = (player1, player2) => {
 };
 
 // get player info
-player1Name = document.getElementById("player1Name").value;
-player2Name = document.getElementById("player2Name").value;
-player1 = player(player1Name, "X");
-player2 = player(player2Name, "O");
-NewGame = gameBoard(player1, player2);
-NewGame.startGame();
 
-winnerCheck = (gameArray) => {
-  winningArrays = [
-    [0, 1, 2],
-    [0, 3, 6],
-    [0, 4, 8],
-    [1, 4, 7],
-    [2, 5, 8],
-    [2, 4, 6],
-  ];
-};
+const playbutton = document.getElementById("playButton");
+playButton.addEventListener("click", function (e) {
+  e.preventDefault();
+  console.log("play Button Clicked");
+  let form = document.getElementById("userNameForm");
+  let player1Name = form.player1name.value;
+  let player2Name = form.player2name.value;
+
+  player1 = player(player1Name, "X");
+  console.log(player1Name);
+  console.log(player2Name);
+  player2 = player(player2Name, "O");
+  NewGame = gameBoard(player1, player2);
+  NewGame.startGame();
+});
